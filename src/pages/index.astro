@@ -115,14 +115,14 @@ const articles = await fetchArticles();
     margin: 0 0 1.25rem;
   }
 
-  /* Two-tone: yellow alone is near-invisible on white, blue anchors it. */
+  /* Yellow is low-contrast on white, so the bar earns its presence by area. */
   h2::before {
     content: '';
     display: inline-block;
-    width: 1.75rem;
-    height: 4px;
-    background: linear-gradient(to right, var(--neon) 50%, var(--blue) 50%);
-    vertical-align: 0.2em;
+    width: 2rem;
+    height: 9px;
+    background: var(--neon);
+    vertical-align: 0.05em;
     margin-right: 0.6rem;
   }
 
@@ -178,7 +178,7 @@ const articles = await fetchArticles();
   }
 
   .repos li {
-    border-left: 3px solid var(--rule);
+    border-left: 6px solid var(--neon);
     padding-left: 0.75rem;
   }
 
