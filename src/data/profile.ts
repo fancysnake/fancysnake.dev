@@ -1,9 +1,10 @@
 export const profile = {
   name: 'Radosław Ganczarek',
-  tagline: 'Human Sorcerer/Bard',
+  tagline: 'Backend developer',
   intro:
-    'Backend developer in Wrocław. Python, Django, and a long-running interest in ' +
-    'architecture that survives contact with a real codebase.',
+    'Python and Django, with a long-running interest in architecture that survives ' +
+    'contact with a real codebase. I build small tools for refactoring, clean ' +
+    'architecture, and keeping coding agents on rails — and write about the results.',
   links: [
     { label: 'GitHub', href: 'https://github.com/fancysnake' },
     { label: 'Medium', href: 'https://medium.com/@radoslaw_jan' },
@@ -50,21 +51,6 @@ const sources: Repo[] = [
     language: 'Python',
     site: { label: 'Docs', href: 'https://tingle.fancysnake.dev' },
     logo: '/logos/tingle.png',
-  },
-  {
-    name: 'exemplar',
-    blurb: 'Template repo for Python projects.',
-    language: 'Jinja',
-  },
-  {
-    name: 'acervus',
-    blurb: 'Filesystem tagging tool.',
-    language: 'Python',
-  },
-  {
-    name: 'clon',
-    blurb: 'Clon Locates Obvious Nonsense.',
-    language: 'Python',
   },
 ];
 
