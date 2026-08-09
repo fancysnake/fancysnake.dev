@@ -2,11 +2,10 @@ export const profile = {
   name: 'Radosław Ganczarek',
   tagline: 'Code sorcerer / TTRPG bard',
   intro:
-    'Most of the code with my name on it is written by an agent these days. That ' +
-    'makes architecture and tooling the only real lever left on quality — code now ' +
-    'arrives faster than anyone can review it, so the guardrails have to live in the ' +
-    'structure, not the review queue. I build small Python tools for that, and write ' +
-    'about what I find.',
+    'In a world where most of the code is written by agents, architecture and tooling ' +
+    'are the last thing standing between a codebase and entropy. Code arrives faster ' +
+    'than anyone can review it — so the guardrails have to live in the structure, not ' +
+    'the review queue. I build small Python tools for that, and write about what I find.',
   links: [
     { label: 'GitHub', href: 'https://github.com/fancysnake' },
     { label: 'Medium', href: 'https://medium.com/@radoslaw_jan' },
