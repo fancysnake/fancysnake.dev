@@ -32,12 +32,15 @@ const articles = await fetchArticles();
           {
             repos.map((repo) => (
               <li>
-                <span class="repo-name">{repo.name}</span>
-                <span class="lang">{repo.language}</span>
+                <div class="repo-head">
+                  {repo.logo && <img src={repo.logo} alt="" width="28" height="28" />}
+                  <span class="repo-name">{repo.name}</span>
+                </div>
                 <p>{repo.blurb}</p>
                 <p class="repo-links">
                   <a href={repo.href}>Repo</a>
-                  {repo.docs && <a href={repo.docs}>Docs</a>}
+                  {repo.site && <a href={repo.site.href}>{repo.site.label}</a>}
+                  <span class="lang">{repo.language}</span>
                 </p>
               </li>
             ))
@@ -152,28 +155,43 @@ const articles = await fetchArticles();
     padding: 0;
   }
 
-  .repos li {
-    margin-bottom: 1.5rem;
+  .repos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 1.5rem;
+  }
+
+  .repo-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .repo-head img {
+    flex: none;
+    border-radius: 4px;
   }
 
   .repo-name {
     font-weight: 600;
+    overflow-wrap: anywhere;
   }
 
   .repos p {
-    margin: 0.15rem 0 0;
+    margin: 0.3rem 0 0;
     color: var(--muted);
+    font-size: 0.875rem;
   }
 
   .repo-links {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.85rem;
     margin-top: 0.35rem;
-    font-size: 0.875rem;
   }
 
   .lang {
-    margin-left: 0.6rem;
     font-size: 0.75rem;
     color: var(--muted);
   }

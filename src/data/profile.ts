@@ -17,7 +17,10 @@ type Repo = {
   name: string;
   blurb: string;
   language: string;
-  docs?: string;
+  /** Second link next to the repo — docs site, live instance, whatever fits. */
+  site?: { label: string; href: string };
+  /** Path under `public/logos/`. */
+  logo?: string;
 };
 
 const sources: Repo[] = [
@@ -25,24 +28,28 @@ const sources: Repo[] = [
     name: 'zagrajmy/ludamus',
     blurb: 'Event management website for conventions and tabletop games. Co-authored.',
     language: 'Python',
+    site: { label: 'zagrajmy.net', href: 'https://zagrajmy.net' },
+    logo: '/logos/ludamus.svg',
   },
   {
     name: 'vekna',
     blurb: 'Coding agent overseer — rituals that keep an LLM on rails.',
     language: 'Python',
-    docs: 'https://vekna.fancysnake.dev',
+    site: { label: 'Docs', href: 'https://vekna.fancysnake.dev' },
+    logo: '/logos/vekna.png',
   },
   {
     name: 'glimpse-architecture',
     blurb: 'Framework-agnostic clean architecture for Python projects.',
     language: 'Python',
-    docs: 'https://glimpse.fancysnake.dev',
+    site: { label: 'Docs', href: 'https://glimpse.fancysnake.dev' },
   },
   {
     name: 'tingle',
     blurb: 'Spider-sense for refactoring.',
     language: 'Python',
-    docs: 'https://tingle.fancysnake.dev',
+    site: { label: 'Docs', href: 'https://tingle.fancysnake.dev' },
+    logo: '/logos/tingle.png',
   },
   {
     name: 'exemplar',
