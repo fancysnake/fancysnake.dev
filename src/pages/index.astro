@@ -77,7 +77,7 @@ const articles = await fetchArticles();
     --muted: #5b6070;
     --rule: #e6e7ec;
     --blue: #1a3cff;
-    --neon: #e8ff00;
+    --neon: #ffe500;
     --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
   }
 
@@ -115,14 +115,14 @@ const articles = await fetchArticles();
     margin: 0 0 1.25rem;
   }
 
-  /* The one flash of neon per section. */
+  /* Two-tone: yellow alone is near-invisible on white, blue anchors it. */
   h2::before {
     content: '';
     display: inline-block;
-    width: 1.5rem;
-    height: 3px;
-    background: var(--neon);
-    vertical-align: 0.25em;
+    width: 1.75rem;
+    height: 4px;
+    background: linear-gradient(to right, var(--neon) 50%, var(--blue) 50%);
+    vertical-align: 0.2em;
     margin-right: 0.6rem;
   }
 
@@ -183,7 +183,7 @@ const articles = await fetchArticles();
   }
 
   .repos li:hover {
-    border-left-color: var(--neon);
+    border-left-color: var(--blue);
   }
 
   .repo-head {
