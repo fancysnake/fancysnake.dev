@@ -1,10 +1,12 @@
 export const profile = {
   name: 'Radosław Ganczarek',
-  tagline: 'Backend developer',
+  tagline: 'Code sorcerer / TTRPG bard',
   intro:
-    'Python and Django, with a long-running interest in architecture that survives ' +
-    'contact with a real codebase. I build small tools for refactoring, clean ' +
-    'architecture, and keeping coding agents on rails — and write about the results.',
+    'Most of the code with my name on it is written by an agent these days. That ' +
+    'makes architecture and tooling the only real lever left on quality — code now ' +
+    'arrives faster than anyone can review it, so the guardrails have to live in the ' +
+    'structure, not the review queue. I build small Python tools for that, and write ' +
+    'about what I find.',
   links: [
     { label: 'GitHub', href: 'https://github.com/fancysnake' },
     { label: 'Medium', href: 'https://medium.com/@radoslaw_jan' },
@@ -43,6 +45,7 @@ const sources: Repo[] = [
     name: 'glimpse-architecture',
     blurb: 'Framework-agnostic clean architecture for Python projects.',
     language: 'Python',
+    logo: '/logos/glimpse.png',
     site: { label: 'Docs', href: 'https://glimpse.fancysnake.dev' },
   },
   {
