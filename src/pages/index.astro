@@ -13,7 +13,7 @@ const articles = await fetchArticles();
     <title>{profile.name}</title>
     <meta name="description" content={profile.intro} />
     <link rel="canonical" href={Astro.site} />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
   </head>
   <body>
     <main>
@@ -72,21 +72,19 @@ const articles = await fetchArticles();
 
 <style>
   :root {
-    --bg: #fdfdfc;
-    --fg: #1b1b19;
-    --muted: #6b6b66;
-    --rule: #e4e4e0;
-    --accent: #0f6b53;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #131315;
-      --fg: #e8e8e4;
-      --muted: #9a9a94;
-      --rule: #2b2b2e;
-      --accent: #6fd0ae;
-    }
+    --bg: #dfe1e8;
+    --panel: #fafbff;
+    --ink: #08080d;
+    --muted: #4c516b;
+    --blue: #0a1fe0;
+    --neon: #fcee0a;
+    --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+    /* Hazard tape — the single most 2077 thing CSS can do for free. */
+    --hazard: repeating-linear-gradient(
+      -45deg,
+      var(--neon) 0 10px,
+      var(--ink) 10px 20px
+    );
   }
 
   * {
@@ -95,30 +93,75 @@ const articles = await fetchArticles();
 
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
+    /* Faint scanlines, not graph paper. */
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        rgb(8 8 13 / 4%) 0 1px,
+        transparent 1px 3px
+      ),
+      var(--bg);
   }
 
   main {
-    max-width: 38rem;
+    max-width: 40rem;
     margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
+    padding: 2.5rem 1.25rem 5rem;
+  }
+
+  header,
+  section {
+    position: relative;
+    background: var(--panel);
+    border: 2px solid var(--ink);
+    padding: 1.5rem;
+    /* Notched corner — panel, not sheet of paper. */
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+  }
+
+  header {
+    padding-top: 1.75rem;
+  }
+
+  /* Hazard strip across the top of the header. */
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 8px;
+    background: var(--hazard);
+  }
+
+  section {
+    margin-top: 1.75rem;
   }
 
   h1 {
-    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    line-height: 1.1;
     margin: 0;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    /* Chromatic aberration: blue/yellow split, no filter, no JS. */
+    text-shadow:
+      2px 0 0 var(--neon),
+      -2px 0 0 var(--blue);
   }
 
   h2 {
+    display: inline-block;
+    font-family: var(--mono);
     font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    margin: 0 0 1rem;
+    letter-spacing: 0.18em;
+    margin: 0 0 1.25rem;
+    padding: 0.25rem 0.7rem;
+    color: var(--neon);
+    background: var(--ink);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
   }
 
   p {
@@ -126,27 +169,51 @@ const articles = await fetchArticles();
   }
 
   .tagline {
-    color: var(--muted);
-    margin-top: 0.25rem;
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: var(--neon);
+    padding: 0.15rem 0.5rem;
+    margin-top: 0.75rem;
   }
 
   a {
-    color: var(--accent);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
+    color: var(--blue);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  a:hover {
+    background: var(--neon);
+    color: var(--ink);
   }
 
   nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-top: 1.25rem;
   }
 
-  section {
-    margin-top: 3rem;
-    border-top: 1px solid var(--rule);
-    padding-top: 1.5rem;
+  nav a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    color: var(--panel);
+    background: var(--ink);
+    padding: 0.3rem 0.7rem;
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  }
+
+  nav a:hover {
+    color: var(--ink);
+    background: var(--neon);
   }
 
   ul {
@@ -158,7 +225,18 @@ const articles = await fetchArticles();
   .repos {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem 1.5rem;
+    gap: 0.85rem;
+  }
+
+  .repos li {
+    background: var(--bg);
+    border-left: 4px solid var(--blue);
+    padding: 0.7rem 0.7rem 0.75rem;
+  }
+
+  .repos li:hover {
+    border-left-color: var(--neon);
+    background: var(--panel);
   }
 
   .repo-head {
@@ -169,30 +247,37 @@ const articles = await fetchArticles();
 
   .repo-head img {
     flex: none;
-    border-radius: 4px;
   }
 
   .repo-name {
-    font-weight: 600;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.9375rem;
     overflow-wrap: anywhere;
   }
 
   .repos p {
-    margin: 0.3rem 0 0;
+    margin: 0.4rem 0 0;
     color: var(--muted);
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
   }
 
   .repo-links {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 0.85rem;
-    margin-top: 0.35rem;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   .lang {
-    font-size: 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.6875rem;
     color: var(--muted);
   }
 
@@ -201,18 +286,41 @@ const articles = await fetchArticles();
     justify-content: space-between;
     align-items: baseline;
     gap: 1rem;
-    padding: 0.55rem 0;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--bg);
+  }
+
+  .articles li:last-child {
+    border-bottom: 0;
   }
 
   .articles time {
     flex: none;
-    font-size: 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.6875rem;
     color: var(--muted);
     font-variant-numeric: tabular-nums;
   }
 
   .more {
     margin-top: 1rem;
-    font-size: 0.875rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 30rem) {
+    header,
+    section {
+      padding: 1.15rem;
+    }
+  }
+
+  /* The aberration and stripes are decoration; drop the motion-adjacent parts. */
+  @media (prefers-reduced-motion: reduce) {
+    h1 {
+      text-shadow: none;
+    }
   }
 </style>
