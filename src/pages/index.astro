@@ -76,8 +76,10 @@ const articles = await fetchArticles();
     --fg: #12131a;
     --muted: #5b6070;
     --rule: #e6e7ec;
-    --blue: #1a3cff;
-    --neon: #ffe500;
+    --teal: #1f9999;
+    --purple: #7c29aa;
+    --orange: #ff8f33;
+    --yellow: #ffe500;
     --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
   }
 
@@ -111,7 +113,7 @@ const articles = await fetchArticles();
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: var(--blue);
+    color: var(--teal);
     margin: 0 0 1.25rem;
   }
 
@@ -121,7 +123,7 @@ const articles = await fetchArticles();
     display: inline-block;
     width: 2rem;
     height: 9px;
-    background: var(--neon);
+    background: var(--yellow);
     vertical-align: 0.05em;
     margin-right: 0.6rem;
   }
@@ -135,18 +137,18 @@ const articles = await fetchArticles();
     font-size: 0.8125rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--blue);
+    color: var(--teal);
     margin-top: 0.5rem;
   }
 
   a {
-    color: var(--blue);
+    color: var(--teal);
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
 
   a:hover {
-    background: var(--neon);
+    background: var(--orange);
     color: var(--fg);
   }
 
@@ -177,13 +179,22 @@ const articles = await fetchArticles();
     gap: 1.25rem;
   }
 
+  /* Bars cycle through the palette so all four colours earn a place. */
   .repos li {
-    border-left: 6px solid var(--neon);
+    border-left: 6px solid var(--yellow);
     padding-left: 0.75rem;
   }
 
-  .repos li:hover {
-    border-left-color: var(--blue);
+  .repos li:nth-child(4n + 2) {
+    border-left-color: var(--orange);
+  }
+
+  .repos li:nth-child(4n + 3) {
+    border-left-color: var(--teal);
+  }
+
+  .repos li:nth-child(4n) {
+    border-left-color: var(--purple);
   }
 
   .repo-head {
