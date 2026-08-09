@@ -1,0 +1,200 @@
+---
+import { profile, repos } from '../data/profile';
+import { fetchArticles } from '../lib/medium';
+
+const articles = await fetchArticles();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{profile.name}</title>
+    <meta name="description" content={profile.intro} />
+    <link rel="canonical" href={Astro.site} />
+    <meta name="color-scheme" content="light dark" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>{profile.name}</h1>
+        <p class="tagline">{profile.tagline}</p>
+        <p>{profile.intro}</p>
+        <nav>
+          {profile.links.map((link) => <a href={link.href}>{link.label}</a>)}
+        </nav>
+      </header>
+
+      <section>
+        <h2>Code</h2>
+        <ul class="repos">
+          {
+            repos.map((repo) => (
+              <li>
+                <span class="repo-name">{repo.name}</span>
+                <span class="lang">{repo.language}</span>
+                <p>{repo.blurb}</p>
+                <p class="repo-links">
+                  <a href={repo.href}>Repo</a>
+                  {repo.docs && <a href={repo.docs}>Docs</a>}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      {
+        articles.length > 0 && (
+          <section>
+            <h2>Writing</h2>
+            <ul class="articles">
+              {articles.map((article) => (
+                <li>
+                  <a href={article.href}>{article.title}</a>
+                  <time datetime={article.date}>{article.date}</time>
+                </li>
+              ))}
+            </ul>
+            <p class="more">
+              <a href="https://medium.com/@radoslaw_jan">All posts on Medium →</a>
+            </p>
+          </section>
+        )
+      }
+    </main>
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg: #fdfdfc;
+    --fg: #1b1b19;
+    --muted: #6b6b66;
+    --rule: #e4e4e0;
+    --accent: #0f6b53;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131315;
+      --fg: #e8e8e4;
+      --muted: #9a9a94;
+      --rule: #2b2b2e;
+      --accent: #6fd0ae;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 0 0 1rem;
+  }
+
+  p {
+    margin: 0.75rem 0;
+  }
+
+  .tagline {
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  section {
+    margin-top: 3rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .repos li {
+    margin-bottom: 1.5rem;
+  }
+
+  .repo-name {
+    font-weight: 600;
+  }
+
+  .repos p {
+    margin: 0.15rem 0 0;
+    color: var(--muted);
+  }
+
+  .repo-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.35rem;
+    font-size: 0.875rem;
+  }
+
+  .lang {
+    margin-left: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .articles li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.55rem 0;
+  }
+
+  .articles time {
+    flex: none;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .more {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+  }
+</style>
