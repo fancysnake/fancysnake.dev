@@ -19,6 +19,8 @@ type Repo = {
   site?: { label: string; href: string };
   /** Path under `public/logos/`. */
   logo?: string;
+  /** Bar colour — any CSS colour, usually the project's docs theme. */
+  color: string;
 };
 
 const sources: Repo[] = [
@@ -28,6 +30,7 @@ const sources: Repo[] = [
     language: 'Python',
     site: { label: 'zagrajmy.net', href: 'https://zagrajmy.net' },
     logo: '/logos/ludamus.svg',
+    color: '#f85a3c',
   },
   {
     name: 'vekna',
@@ -35,6 +38,7 @@ const sources: Repo[] = [
     language: 'Python',
     site: { label: 'Docs', href: 'https://vekna.fancysnake.dev' },
     logo: '/logos/vekna.png',
+    color: '#3b4a2a',
   },
   {
     name: 'glimpse-architecture',
@@ -42,6 +46,7 @@ const sources: Repo[] = [
     language: 'Python',
     logo: '/logos/glimpse.png',
     site: { label: 'Docs', href: 'https://glimpse.fancysnake.dev' },
+    color: '#7e56c2',
   },
   {
     name: 'tingle',
@@ -49,6 +54,15 @@ const sources: Repo[] = [
     language: 'Python',
     site: { label: 'Docs', href: 'https://tingle.fancysnake.dev' },
     logo: '/logos/tingle.png',
+    color: '#c62828',
+  },
+  {
+    name: 'cantare',
+    blurb: 'Static songbook for singing meetups — search lyrics, flip on chords, sing along.',
+    language: 'Astro',
+    site: { label: 'Docs', href: 'https://cantare.fancysnake.dev' },
+    logo: '/logos/cantare.png',
+    color: '#ffec3d',
   },
 ];
 

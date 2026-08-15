@@ -31,7 +31,7 @@ const articles = await fetchArticles();
         <ul class="repos">
           {
             repos.map((repo) => (
-              <li>
+              <li style={`border-left-color: ${repo.color}`}>
                 <div class="repo-head">
                   {repo.logo && <img src={repo.logo} alt="" width="28" height="28" />}
                   <span class="repo-name">{repo.name}</span>
@@ -179,22 +179,10 @@ const articles = await fetchArticles();
     gap: 1.25rem;
   }
 
-  /* Bars cycle through the palette so all four colours earn a place. */
+  /* Bar colour comes from the repo's own entry in profile.ts. */
   .repos li {
     border-left: 6px solid var(--yellow);
     padding-left: 0.75rem;
-  }
-
-  .repos li:nth-child(4n + 2) {
-    border-left-color: var(--orange);
-  }
-
-  .repos li:nth-child(4n + 3) {
-    border-left-color: var(--teal);
-  }
-
-  .repos li:nth-child(4n) {
-    border-left-color: var(--purple);
   }
 
   .repo-head {
