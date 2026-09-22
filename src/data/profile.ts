@@ -66,7 +66,7 @@ const sources: Repo[] = [
   },
   {
     name: 'cabinet',
-    blurb: 'A vekna tome: pull request maintenance rituals for GitHub and GitLab.',
+    blurb: 'My bag of tricks — vekna rituals that maintain pull requests, plus a Claude Code plugin marketplace.',
     language: 'Python',
     site: { label: 'Docs', href: 'https://cabinet.fancysnake.dev' },
     logo: '/logos/cabinet.png',
