@@ -1,9 +1,7 @@
 ---
-import { profile, repos as sources } from '../data/profile';
-import { byLastPush } from '../lib/github';
+import { profile, repos } from '../data/profile';
 import { fetchArticles } from '../lib/medium';
 
-const repos = await byLastPush(sources);
 const articles = await fetchArticles();
 ---
 
