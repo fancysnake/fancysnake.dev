@@ -22,11 +22,21 @@ const articles = await fetchArticles();
   <body>
     <main>
       <header>
-        <h1>{profile.name}</h1>
-        <p class="tagline">{profile.tagline}</p>
-        <p>{profile.intro}</p>
-        <nav>
-          {profile.links.map((link) => <a href={link.href}>{link.label}</a>)}
+        <div class="bio">
+          <h1>{profile.name}</h1>
+          <p class="tagline">{profile.tagline}</p>
+          <p>{profile.intro}</p>
+        </div>
+        <nav aria-label="Elsewhere">
+          {
+            profile.links.map((link) => (
+              <a href={link.href} aria-label={link.label} title={link.label}>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                  <path d={link.icon} />
+                </svg>
+              </a>
+            ))
+          }
         </nav>
       </header>
 
@@ -109,8 +119,16 @@ const articles = await fetchArticles();
     padding: 4rem 1.5rem 6rem;
   }
 
-  /* Prose keeps a reading measure; the tiles below take the full width. */
   header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem 3rem;
+  }
+
+  /* Prose keeps a reading measure; the tiles below take the full width. */
+  .bio {
     max-width: 38rem;
   }
 
@@ -167,11 +185,18 @@ const articles = await fetchArticles();
 
   nav {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1.25rem;
-    font-family: var(--mono);
-    font-size: 0.8125rem;
+    gap: 0.25rem;
+    margin-top: 0.35rem;
+  }
+
+  nav a {
+    display: block;
+    padding: 0.4rem;
+    line-height: 0;
+  }
+
+  nav svg {
+    fill: currentColor;
   }
 
   /* One tile per category; as many across as fit the viewport. */
