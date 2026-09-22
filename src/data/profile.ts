@@ -66,7 +66,7 @@ const sources: Repo[] = [
   },
   {
     name: 'cabinet',
-    blurb: 'The cupboard and the staff that keep a house in order — vekna rituals that tend open pull requests overnight, and Claude Code skills for the repo chores not worth a ritual.',
+    blurb: 'My collection of vekna rituals and Claude skills.',
     language: 'vekna + Claude Code skills',
     site: { label: 'Docs', href: 'https://cabinet.fancysnake.dev' },
     logo: '/logos/cabinet.png',
