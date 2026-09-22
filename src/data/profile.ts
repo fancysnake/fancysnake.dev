@@ -10,9 +10,13 @@ export const profile = {
   ],
 };
 
+/** One tile per category, in this order. */
+export const categories = ['Apps', 'Quality', 'AI'] as const;
+
 type Repo = {
   /** Bare name for my own repos, `owner/name` for anything else. */
   name: string;
+  category: (typeof categories)[number];
   blurb: string;
   language: string;
   /** Second link next to the repo — docs site, live instance, whatever fits. */
@@ -26,6 +30,7 @@ type Repo = {
 const sources: Repo[] = [
   {
     name: 'zagrajmy/ludamus',
+    category: 'Apps',
     blurb: 'Event management website for conventions and tabletop games. Co-authored.',
     language: 'Python',
     site: { label: 'zagrajmy.net', href: 'https://zagrajmy.net' },
@@ -34,6 +39,7 @@ const sources: Repo[] = [
   },
   {
     name: 'vekna',
+    category: 'AI',
     blurb: 'Coding agent overseer — rituals that keep an LLM on rails.',
     language: 'Python',
     site: { label: 'Docs', href: 'https://vekna.fancysnake.dev' },
@@ -42,6 +48,7 @@ const sources: Repo[] = [
   },
   {
     name: 'glimpse-architecture',
+    category: 'Quality',
     blurb: 'Framework-agnostic clean architecture for Python projects.',
     language: 'Python',
     logo: '/logos/glimpse.png',
@@ -50,6 +57,7 @@ const sources: Repo[] = [
   },
   {
     name: 'tingle',
+    category: 'Quality',
     blurb: 'Spider-sense for refactoring.',
     language: 'Python',
     site: { label: 'Docs', href: 'https://tingle.fancysnake.dev' },
@@ -58,6 +66,7 @@ const sources: Repo[] = [
   },
   {
     name: 'cantare',
+    category: 'Apps',
     blurb: 'Static songbook for singing meetups — search lyrics, flip on chords, sing along.',
     language: 'Astro',
     site: { label: 'Docs', href: 'https://cantare.fancysnake.dev' },
@@ -66,6 +75,7 @@ const sources: Repo[] = [
   },
   {
     name: 'cabinet',
+    category: 'AI',
     blurb: 'My collection of vekna rituals and Claude skills.',
     language: 'vekna + Claude Code skills',
     site: { label: 'Docs', href: 'https://cabinet.fancysnake.dev' },
