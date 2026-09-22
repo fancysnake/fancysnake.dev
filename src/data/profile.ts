@@ -64,6 +64,14 @@ const sources: Repo[] = [
     logo: '/logos/cantare.png',
     color: '#ffec3d',
   },
+  {
+    name: 'cabinet',
+    blurb: 'A vekna tome: pull request maintenance rituals for GitHub and GitLab.',
+    language: 'Python',
+    site: { label: 'Docs', href: 'https://cabinet.fancysnake.dev' },
+    logo: '/logos/cabinet.png',
+    color: '#311b92',
+  },
 ];
 
 export const repos = sources.map((repo) => ({
