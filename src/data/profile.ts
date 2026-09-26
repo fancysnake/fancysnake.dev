@@ -99,6 +99,15 @@ const sources: Repo[] = [
     logo: '/logos/cabinet.png',
     color: '#311b92',
   },
+  {
+    name: 'landschaft',
+    category: 'Apps',
+    blurb: 'Local kanban dashboards over GitHub issues — swimlanes × columns from labels.',
+    language: 'Astro',
+    site: { label: 'Docs', href: 'https://landschaft.fancysnake.dev' },
+    logo: '/logos/landschaft.png',
+    color: '#1f5c3a',
+  },
 ];
 
 export const repos = sources.map((repo) => ({
