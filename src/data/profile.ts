@@ -108,6 +108,15 @@ const sources: Repo[] = [
     logo: '/logos/landschaft.png',
     color: '#1f5c3a',
   },
+  {
+    name: 'lapidarium',
+    category: 'Apps',
+    blurb: 'Self-hosted home base for multi-format creators — every piece at its own address.',
+    language: 'Python',
+    site: { label: 'Docs', href: 'https://lapidarium.fancysnake.dev' },
+    logo: '/logos/lapidarium.png',
+    color: '#00b8d4',
+  },
 ];
 
 export const repos = sources.map((repo) => ({
