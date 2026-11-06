@@ -24,7 +24,7 @@ const articles = await fetchArticles();
       <header>
         <div class="bio">
           <h1>{profile.name}</h1>
-          <p class="tagline">{profile.tagline}</p>
+          <p class="tagline">{profile.tagline} <a href={profile.bard.href}>{profile.bard.label}</a></p>
           <p>{profile.intro}</p>
         </div>
         <nav aria-label="Elsewhere">
